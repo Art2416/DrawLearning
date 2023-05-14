@@ -195,8 +195,7 @@ var app = (function (){
         ctx.lineTo(point.x, point.y);
         ctx.stroke();
         console.log(point);
-        initialX = point.x;
-        initialY = point.y;
+        ctx.closePath();
 
     };
 
@@ -237,8 +236,7 @@ var app = (function (){
                     }
 
                     canvas.addEventListener("pointerdown", function(event){
-                        initialX = event.offsetX;
-                        initialY = event.offsetY;
+
                         canvas.addEventListener("mousemove", md);
                     });
 

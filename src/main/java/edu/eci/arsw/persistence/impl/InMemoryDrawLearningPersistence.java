@@ -1,10 +1,10 @@
 package edu.eci.arsw.persistence.impl;
 
+import edu.eci.arsw.persistence.DrawLearningPersistence;
+import edu.eci.arsw.persistence.DrawLearningPersistenceException;
 import edu.eci.arsw.model.Clue;
 import edu.eci.arsw.model.Point;
 import edu.eci.arsw.model.User;
-import edu.eci.arsw.persistence.DrawLearningPersistence;
-import edu.eci.arsw.persistence.DrawLearningPersistenceException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class InMemoryDrawLearningPersistence implements DrawLearningPersistence {
 
-    private final Map<String,User> participantes = new ConcurrentHashMap<>();
+    private final Map<String, User> participantes = new ConcurrentHashMap<>();
 
     private User masterName = null;
     private Clue nuevaClue = new Clue();
