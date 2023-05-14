@@ -26,8 +26,8 @@ var app = (function (){
         }
     }
 
-    function createMaster(master){
-        var name = master + " Organizer";
+    function createOrganizer(Organizer){
+        var name = Organizer + " Organizer";
         if(name !== ""){
             sessionStorage.setItem("name",name);
             apiclient.addUser(name).then(()=>{
@@ -285,7 +285,7 @@ var app = (function (){
         init:init,
         deletePoints: deletePoints,
         getUsers: getUsers,
-        createMaster: createMaster,
+        createOrganizer: createOrganizer,
         reDirectCanvaParticipante   : reDirectCanvaParticipante,
         openWin: openWin,
         publicarPregunta: publicarPregunta,
