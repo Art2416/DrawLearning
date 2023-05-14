@@ -1,9 +1,9 @@
 #### Escuela Colombiana de Ingeniería
 
-#### Arquitectura de Software (ARSW)
+### Arquitectura de Software (ARSW)
 
-#### DrawLearning!!!
+### DrawLearning!!!
 
-### Integrantes
+##Integrantes
 * stefania Giraldo
 * David Narvaez
