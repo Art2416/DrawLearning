@@ -1,30 +1,31 @@
 package edu.eci.arsw.model;
 
 public class Clue {
-    private String Pista;
-    private boolean Take;
 
+    private String contenido;
+    private boolean tomada;
+
+    /*Crea la lista*/
     public Clue(){}
 
-    public Clue(String Pista, boolean Take){
-        this.Pista = Pista;
-        this.Take = Take;
+    public Clue(String contenido, boolean tomada){
+        this.contenido = contenido;
+        this.tomada = tomada;
     }
 
-    public boolean getTake(){
-        return Take;
+    public boolean getTomada(){
+        return tomada;
     }
 
-    public void setTake(boolean WinnerClue){
-        this.Take = WinnerClue;
+    public void setTomada(boolean ganadorPista){
+        this.tomada = ganadorPista;
     }
 
-    public String getPista(){
-        return Pista;
+    public String getContenido(){
+        return contenido;
     }
 
-    public void setPista(String Pista){
-        this.Pista = Pista;
+    public void setContenido(String contenido){
+        this.contenido = contenido;
     }
-
 }

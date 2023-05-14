@@ -1,13 +1,14 @@
 package edu.eci.arsw.persistence;
 
-public class DrawlearningPersistenceException extends Exception{
-    public static final String NO_USER = "No se encontro el usuario en el juego";
+public class DrawLearningPersistenceException extends Exception{
 
-    public DrawlearningPersistenceException(String message){
+    public static final String NO_USER = "No se ha encontrado el usuario dentro de la partida";
+
+    public DrawLearningPersistenceException(String message){
         super(message);
     }
 
-    public DrawlearningPersistenceException(String message, Throwable cause){
+    public DrawLearningPersistenceException(String message, Throwable cause){
         super(message,cause);
     }
 }

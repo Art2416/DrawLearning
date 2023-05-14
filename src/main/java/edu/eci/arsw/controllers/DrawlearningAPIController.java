@@ -1,9 +1,10 @@
 package edu.eci.arsw.controllers;
+
 import com.google.gson.Gson;
 import edu.eci.arsw.model.Clue;
 import edu.eci.arsw.model.User;
-import edu.eci.arsw.persistence.DrawlearningPersistenceException;
-import edu.eci.arsw.services.DrawlearningServices;
+import edu.eci.arsw.persistence.DrawLearningPersistenceException;
+import edu.eci.arsw.services.DrawLearningServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,17 +13,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 @RestController
-@RequestMapping(value="/drawlearning")
-public class DrawlearningAPIController {
+@RequestMapping(value="/DrawLearning")
+public class DrawLearningAPIController {
+
     @Autowired
-    DrawlearningServices dls = null;
+    DrawLearningServices ds = null;
 
     @RequestMapping(path = "/OrganizerName/OrganizerName" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getOrganizerName() {
         User Organizer = null;
         try {
-            Organizer = dls.getOrganizerName();
+            Organizer = ds.getOrganizerName();
         } catch (Exception e) {
             return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
         }
@@ -30,43 +33,11 @@ public class DrawlearningAPIController {
         return new ResponseEntity<>(gson.toJson(Organizer), HttpStatus.ACCEPTED);
 
     }
-    @RequestMapping(path = "/{name}" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getBlueprintByAuthorName(@PathVariable String name) {
-        User user = null;
-        try {
-            user = dls.getUser(name);
-        } catch (DrawlearningPersistenceException e) {
-            return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
-        }
-        Gson gson = new Gson();
-        return new ResponseEntity<>(gson.toJson(user), HttpStatus.ACCEPTED);
-
-    }
-    @RequestMapping(path = "/TakeClue", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> TakeClue() {
-        try {
-            Gson gson = new Gson();
-            return new ResponseEntity<>(gson.toJson(dls.TakeClue()), HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            Logger.getLogger(DrawlearningAPIController.class.getName()).log(Level.SEVERE, null, e);
-            return new ResponseEntity<>("Error al buscar a los Participants", HttpStatus.NOT_FOUND);
-        }
-    }
-    @RequestMapping(path = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getUsers() {
-        try {
-            Gson gson = new Gson();
-            return new ResponseEntity<>(gson.toJson(dls.getAllUsers()), HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            Logger.getLogger(DrawlearningAPIController.class.getName()).log(Level.SEVERE, null, e);
-            return new ResponseEntity<>("Error al obtener Participantes", HttpStatus.NOT_FOUND);
-        }
-    }
 
     @RequestMapping(path = "/{name}" , method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> setWinner(@PathVariable String name) {
         try {
-            dls.setWinner(name);
+            ds.setWinner(name);
         } catch (Exception e) {
             return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
         }
@@ -75,9 +46,9 @@ public class DrawlearningAPIController {
     }
 
     @RequestMapping(path= "/clean", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteParticipants() {
+    public ResponseEntity<?> deleteParticipantes() {
         try {
-            dls.deleteParticipants();
+            ds.deleteParticipantes();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -85,34 +56,64 @@ public class DrawlearningAPIController {
 
     }
 
+    @RequestMapping(path = "/{name}" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getBlueprintByAuthorName(@PathVariable String name) {
+        User user = null;
+        try {
+            user = ds.getUser(name);
+        } catch (DrawLearningPersistenceException e) {
+            return new ResponseEntity<>("Error",HttpStatus.NOT_FOUND);
+        }
+        Gson gson = new Gson();
+        return new ResponseEntity<>(gson.toJson(user), HttpStatus.ACCEPTED);
 
+    }
 
 
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> postUser(@RequestBody User user){
         try {
-            dls.addNewUser(user);
+            ds.addNewUser(user);
+            //registrar dato
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
-            Logger.getLogger(DrawlearningAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error al adicionar un nuevo usuario",HttpStatus.FORBIDDEN);
+            Logger.getLogger(DrawLearningAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error",HttpStatus.FORBIDDEN);
         }
 
     }
 
-
+    @RequestMapping(path = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getUsers() {
+        try {
+            Gson gson = new Gson();
+            return new ResponseEntity<>(gson.toJson(ds.getAllUsers()), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            Logger.getLogger(DrawLearningAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("Error al buscar a los participantes", HttpStatus.NOT_FOUND);
+        }
+    }
 
     @RequestMapping(path = "/Clue", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveClue(@RequestBody Clue Clue){
+    public ResponseEntity<?> saveClue(@RequestBody Clue clue){
         try {
-            dls.addNewClue(Clue);
+            ds.addNewClue(clue);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex){
-            Logger.getLogger(DrawlearningAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DrawLearningAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("No se ha podido crear la pista", HttpStatus.FORBIDDEN);
         }
     }
 
-
+    @RequestMapping(path = "/TakeClue", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> TakeClue() {
+        try {
+            Gson gson = new Gson();
+            return new ResponseEntity<>(gson.toJson(ds.TakeClue()), HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            Logger.getLogger(DrawLearningAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>("Error al buscar a los participantes", HttpStatus.NOT_FOUND);
+        }
+    }
 }
