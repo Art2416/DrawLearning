@@ -11,3 +11,7 @@ btnAbrirPopup.addEventListener('click', function(){
 btnCerrarPopup.addEventListener('click', function(){
 	overlay.classList.remove('active');
 });
+
+// btnAbrirWin.addEventListener('click', function(){
+//     overgame.classList.add('activewin');
+// });

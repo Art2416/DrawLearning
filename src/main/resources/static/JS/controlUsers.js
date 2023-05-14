@@ -3,7 +3,7 @@ async function signIn() {
   const user = isAdmin ? "Admin" : "User";
   localStorage.setItem("logeo", user);
   if (user === "Admin") {
-    app.createOrganizerM(user);
+    app.createMaster(user);
   } else {
     app.createUser(user);
   }

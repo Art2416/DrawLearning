@@ -26,7 +26,7 @@ var app = (function (){
         }
     }
 
-    function createOrganizer(master){
+    function createMaster(master){
         var name = master + " Organizer";
         if(name !== ""){
             sessionStorage.setItem("name",name);
@@ -189,13 +189,14 @@ var app = (function (){
         ctx.beginPath();
         ctx.moveTo(initialX, initialY);
         ctx.lineWidth = 5;
-        F
+        ctx.strokeStyle = color;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.lineTo(point.x, point.y);
         ctx.stroke();
         console.log(point);
-        ctx.closePath();
+        initialX = point.x;
+        initialY = point.y;
 
     };
 
@@ -236,7 +237,8 @@ var app = (function (){
                     }
 
                     canvas.addEventListener("pointerdown", function(event){
-
+                        initialX = event.offsetX;
+                        initialY = event.offsetY;
                         canvas.addEventListener("mousemove", md);
                     });
 
@@ -285,7 +287,7 @@ var app = (function (){
         init:init,
         deletePoints: deletePoints,
         getUsers: getUsers,
-        createOrganizer: createOrganizer,
+        createMaster: createMaster,
         reDirectCanvaParticipante   : reDirectCanvaParticipante,
         openWin: openWin,
         publicarPregunta: publicarPregunta,
@@ -295,3 +297,6 @@ var app = (function (){
     }
 })();
 console.log(app);
+
+
+
