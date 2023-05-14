@@ -3,50 +3,45 @@
 .abs-center {
   display: flex;
   justify-content: center;
-
 }
 
 .abs-left {
   display: flex;
-  justify-content: left;
-
+  justify-content: flex-start;
 }
+
 .abs-right {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   width: 800px;
-  height: 50px;
+  height: 55px;
 }
 
 .canva-center {
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }
 
 .ask {
-
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   width: 1000px;
   height: 50px;
-
 }
 
 h1.concss {
-    font-size: 34px;
-    font-weight: bold;
-    font-style: italic;
-    font-variant: small-caps;
-    font-family: monospace;
-    text-transform: capitalize;
-    letter-spacing: 4px;
-    color: #1C2833;
-    text-align:center;
-    word-spacing: 8px
+  font-size: 34px;
+  font-weight: bold;
+  font-style: comic-sans;
+  font-variant: small-caps;
+  font-family: cursive;
+  text-transform: capitalize;
+  letter-spacing: 4px;
+  color: #000000;
+  text-align: center;
+  word-spacing: 8px;
 }

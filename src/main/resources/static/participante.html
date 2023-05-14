@@ -24,22 +24,18 @@
         <a href="https://imgbb.com/">
             <img src="https://i.ibb.co/J7bLHNd/Draw-Learning.png" alt="Draw-Learning" border="0" width="400" height="380">
         </a>
-
     </div>
-
 </div>
 
 <div class="canva-center">
-
     <div class="canva-center">
-        <div class="form-floating mb-3">
+        <canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
+        <div class="form-floating mb-3" style="margin-top: 10px;">
             <input type="email" class="form-control" id="pregunta" placeholder="name@example.com" disabled="disabled">
             <label for="pregunta">Preguntas</label>
-
             <button id="botonPista" hidden="hidden" type="button" class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="app.getPista()">
                 Obtener Pista
             </button>
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -59,19 +55,14 @@
                 </div>
             </div>
         </div>
-        <canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
-
     </div>
-    <div class="abs-right">
+
+    <div class="abs-right" style="margin-top: 10px;">
         <button type="button" class="btn btn-danger" onclick="app.deletePoints()">Clear</button>
         <input type="color" id="color" onchange="app.defcolor()">
     </div>
 
-
-
 </div>
-
-
 
 <div class="overgame" id="overgame">
     <div class="winner" id="winner">
