@@ -222,7 +222,7 @@ var app = (function (){
             var name = (sessionStorage.getItem("name"))
             if(! name.includes("Organizer")){
                 conectarCavnaParticipante(name)
-                setTimeout(()=>{apiclient.getMasterName(userConnected)},500)
+                setTimeout(()=>{apiclient.getOrganizerName(userConnected)},500)
                 var canvas = document.getElementById("myCanvas"),
                     context = canvas.getContext("2d");
                 //if PointerEvent is suppported by the browser:
