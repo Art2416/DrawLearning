@@ -118,3 +118,37 @@ body {
           visibility: hidden;}
 
 .overgame.activewin {visibility: visible;}
+
+#participantesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#participantesTable th {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px;
+}
+
+#participantesTable td {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+/* Estilos para resaltar el nombre */
+.participant-name {
+  font-weight: bold;
+  color: #27ae60; /* Color verde */
+}
+/* Estilos para los botones de acción */
+.actions button {
+  background-color: #3498db; /* Color azul */
+  color: #ffffff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.actions button:hover {
+  background-color: #2980b9; /* Color azul más oscuro al pasar el ratón */
+}

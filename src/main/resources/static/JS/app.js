@@ -62,18 +62,17 @@ var app = (function (){
         datanew.map((element) => {
             console.log(element.name)
             $("#participantesTable > tbody:last").append($(
-                "<div >\n" +
-                "<br><br>"+
-                "        <ul class=\"nav\">\n" +
-                "            <li><a  >"+ element.name +"</a>\n" +
-                "                <ul>\n" +
-                "                    <li><a onclick='app.reDirectCanvaParticipante(\""+ element.name +"\")'>Observar Pantalla</a></li>\n" +
-                "                    <li><a class=\"btn-abrir-win\" id=\"btn-abrir-win\" onclick='app.openWin(\""+element.name+"\")'>Escoger Ganador</a></li>\n" +
-                "                    <li><a >Expulsar</a></li>\n" +
-                "                </ul>\n" +
-                "            </li>\n" +
-                "        </ul>\n" +
-                "    </div>" + "</td>"));
+                "<tr>" +
+                    "<td>"+
+                        "<div class=\"participant\">" +
+                            "<span class=\"participant-name\">" + element.name + "</span>"  +
+                "                <div class=\"actions\">" +
+                "                    <button onclick='app.reDirectCanvaParticipante(\"" + element.name + "\")'>Observar Pantalla</button>"  +
+                "                    <button class=\"btn-abrir-win\" id=\"btn-abrir-win\" onclick='app.openWin(\""+element.name+"\")'>Escoger Como Ganador</button>" +
+                "                </div>" +
+                "        </div>" +
+                "   </td>" +
+                "</tr>"));
         });
     }
 
