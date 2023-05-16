@@ -40,7 +40,7 @@ var app = (function (){
     }
 
     var getUsers = function (){
-        if(localStorage.getItem("logeo") !== "Admin" || localStorage.getItem("logeo") === null){
+        if(localStorage.getItem("logeo") !== "Organizer" || localStorage.getItem("logeo") === null){
             window.location = "index.html"
         }else{
             connectAndSubscribe(sessionStorage.getItem("name"));

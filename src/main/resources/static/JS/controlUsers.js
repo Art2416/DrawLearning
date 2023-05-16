@@ -3,7 +3,7 @@ async function signIn(){
         auth: {
             clientId: '498cc182-a2f7-4de1-950c-85367adad63e',
             authority: 'https://login.microsoftonline.com/common/',
-            redirectUri: 'http://localhost:8080/'
+            redirectUri: 'http://localhost:8080/index.html'
         }
     };
     var client = new Msal.UserAgentApplication(config);
