@@ -68,7 +68,7 @@ var app = (function (){
                             "<span class=\"participant-name\">" + element.name + "</span>"  +
                 "                <div class=\"actions\">" +
                 "                    <button onclick='app.reDirectCanvaParticipante(\"" + element.name + "\")'>Observar Pantalla</button>"  +
-                "                    <li><a class=\"btn-abrir-win\" id=\"btn-abrir-win\" onclick='app.openWin(\""+element.name+"\")'>Escoger Como Ganador</a></li>\n" +
+                "                    <button class=\"btn-abrir-win\" id=\"btn-abrir-win\" onclick='app.openWin(\""+element.name+"\")'>Escoger Como Ganador</button>" +
                 "                </div>" +
                 "        </div>" +
                 "   </td>" +
